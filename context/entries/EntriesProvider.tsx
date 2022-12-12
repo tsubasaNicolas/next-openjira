@@ -15,7 +15,7 @@ const Entries_INITIAL_STATE: EntriesState = {
 };
 
 type Props = {
-  children?: React.ReactNode;
+  children: React.ReactNode;
 };
 export const EntriesProvider: FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(entriesReducer, Entries_INITIAL_STATE);
