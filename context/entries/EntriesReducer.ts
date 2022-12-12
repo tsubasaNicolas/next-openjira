@@ -1,5 +1,5 @@
-import { Entry } from "../../interfaces";
 import { EntriesState } from "./";
+import { Entry } from "../../interfaces";
 
 type EntriesActionType =
   | { type: "[Entry] Add-Entry"; payload: Entry }
@@ -28,6 +28,7 @@ export const entriesReducer = (
           return entry;
         }),
       };
+
     case "[Entry] Refresh-Data":
       return {
         ...state,
