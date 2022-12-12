@@ -1,0 +1,14 @@
+{
+  "/api/_document": "pages/api/_document.js",
+  "/_app": "pages/_app.js",
+  "/api/bad-request": "pages/api/bad-request.js",
+  "/api/entries": "pages/api/entries.js",
+  "/api/hello": "pages/api/hello.js",
+  "/api/seed": "pages/api/seed.js",
+  "/api/entries/[id]": "pages/api/entries/[id].js",
+  "/": "pages/index.html",
+  "/_error": "pages/_error.js",
+  "/entries/[id]": "pages/entries/[id].js",
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
+}
