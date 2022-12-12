@@ -1,68 +1,95 @@
 "use strict";
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
 (() => {
 var exports = {};
-exports.id = 375;
-exports.ids = [375];
+exports.id = "pages/api/entries";
+exports.ids = ["pages/api/entries"];
 exports.modules = {
 
-/***/ 1185:
+/***/ "mongoose":
+/*!***************************!*\
+  !*** external "mongoose" ***!
+  \***************************/
 /***/ ((module) => {
 
 module.exports = require("mongoose");
 
 /***/ }),
 
-/***/ 3500:
+/***/ "(api)/./database/db.ts":
+/*!************************!*\
+  !*** ./database/db.ts ***!
+  \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ handler)
-/* harmony export */ });
-/* harmony import */ var _database__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5660);
-/* harmony import */ var _models__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3295);
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"connect\": () => (/* binding */ connect),\n/* harmony export */   \"disconnect\": () => (/* binding */ disconnect)\n/* harmony export */ });\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mongoose */ \"mongoose\");\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mongoose__WEBPACK_IMPORTED_MODULE_0__);\n\n/*\r\n\r\n0 disconnect\r\n1 connected\r\n2 conecting\r\n3 disconnecting\r\n*/ const mongooConnection = {\n    isConnected: 0\n};\nconst connect = async ()=>{\n    if (mongooConnection.isConnected) {\n        console.log(\"ya est\\xe1bamos conectados\");\n        return;\n    }\n    if ((mongoose__WEBPACK_IMPORTED_MODULE_0___default().connections.length) > 0) {\n        mongooConnection.isConnected = (mongoose__WEBPACK_IMPORTED_MODULE_0___default().connections[0].readyState);\n        if (mongooConnection.isConnected === 1) {\n            console.log(\"usando conexi\\xf3n anterior\");\n            return;\n        }\n        await mongoose__WEBPACK_IMPORTED_MODULE_0___default().disconnect();\n    }\n    await mongoose__WEBPACK_IMPORTED_MODULE_0___default().connect(process.env.MONGO_URL || \"\");\n    mongooConnection.isConnected = 1;\n    console.log(\"Conectado a MongoDB\", process.env.MONGO_URL);\n};\nconst disconnect = async ()=>{\n    if (true) return;\n    if (mongooConnection.isConnected === 0) return;\n    await mongoose__WEBPACK_IMPORTED_MODULE_0___default().disconnect();\n    console.log(\"Desconectado de MongoDB\");\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9kYXRhYmFzZS9kYi50cy5qcyIsIm1hcHBpbmdzIjoiOzs7Ozs7O0FBQWdDO0FBQ2hDOztBQVVBO0FBRUEsT0FBTztJQUNMLElBQUlDO1FBQ0ZHLFFBQVFDO1FBQ1I7SUFDRixDQUFDOztDQUVDSixpQkFBaUJDO1FBRWpCLElBQUlELGlCQUFpQkM7WUFDbkJFLFFBQVFDLEdBQUcsQ0FBQztZQUNaOztRQUVGLG9FQUF5QjtJQUMzQixDQUFDO0lBQ0QsTUFBTUwsU0FBU0csT0FBTyxDQUFDTyxRQUFRQyxHQUFHLENBQUNDLFNBQVM7SUFDNUNYLGlCQUFpQkMsV0FBVyxHQUFHO0lBQy9CRSxRQUFRQyxHQUFHLENBQUM7QUFDZCxFQUFFO0FBRUYsT0FBTyxNQUFNSSxDQUFBQSwwREFBYSxHQUFZO0lBQ3BDO0lBRUEsSUFBSVIsRUFBQUEsdURBQWlCQyxVQUFXLEtBQUssR0FBRztJQUV4QyxNQUFNRixTQUFTUyxVQUFVO0lBQ3pCTCxRQUFRQyxHQUFHLENBQUM7QUFDZCxFQUFFIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vb3Blbi1qaXJhLy4vZGF0YWJhc2UvZGIudHM/NWZkNCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgbW9uZ29vc2UgZnJvbSBcIm1vbmdvb3NlXCI7XHJcbi8qXHJcblxyXG4wIGRpc2Nvbm5lY3RcclxuMSBjb25uZWN0ZWRcclxuMiBjb25lY3RpbmdcclxuMyBkaXNjb25uZWN0aW5nXHJcbiovXHJcblxyXG5jb25zdCBtb25nb29Db25uZWN0aW9uID0ge1xyXG4gIGlzQ29ubmVjdGVkOiAwLFxyXG59O1xyXG5cclxuZXhwb3J0IGNvbnN0IGNvbm5lY3QgPSBhc3luYyAoKSA9PiB7XHJcbiAgaWYgKG1vbmdvb0Nvbm5lY3Rpb24uaXNDb25uZWN0ZWQpIHtcclxuICAgIGNvbnNvbGUubG9nKFwieWEgZXN0w6FiYW1vcyBjb25lY3RhZG9zXCIpO1xyXG4gICAgcmV0dXJuO1xyXG4gIH1cclxuICBpZiAobW9uZ29vc2UuY29ubmVjdGlvbnMubGVuZ3RoID4gMCkge1xyXG4gICAgbW9uZ29vQ29ubmVjdGlvbi5pc0Nvbm5lY3RlZCA9IG1vbmdvb3NlLmNvbm5lY3Rpb25zWzBdLnJlYWR5U3RhdGU7XHJcblxyXG4gICAgaWYgKG1vbmdvb0Nvbm5lY3Rpb24uaXNDb25uZWN0ZWQgPT09IDEpIHtcclxuICAgICAgY29uc29sZS5sb2coXCJ1c2FuZG8gY29uZXhpw7NuIGFudGVyaW9yXCIpO1xyXG4gICAgICByZXR1cm47XHJcbiAgICB9XHJcbiAgICBhd2FpdCBtb25nb29zZS5kaXNjb25uZWN0KCk7XHJcbiAgfVxyXG4gIGF3YWl0IG1vbmdvb3NlLmNvbm5lY3QocHJvY2Vzcy5lbnYuTU9OR09fVVJMIHx8IFwiXCIpO1xyXG4gIG1vbmdvb0Nvbm5lY3Rpb24uaXNDb25uZWN0ZWQgPSAxO1xyXG4gIGNvbnNvbGUubG9nKFwiQ29uZWN0YWRvIGEgTW9uZ29EQlwiLCBwcm9jZXNzLmVudi5NT05HT19VUkwpO1xyXG59O1xyXG5cclxuZXhwb3J0IGNvbnN0IGRpc2Nvbm5lY3QgPSBhc3luYyAoKSA9PiB7XHJcbiAgaWYgKHByb2Nlc3MuZW52Lk5PREVfRU5WID09PSBcImRldmVsb3BtZW50XCIpIHJldHVybjtcclxuXHJcbiAgaWYgKG1vbmdvb0Nvbm5lY3Rpb24uaXNDb25uZWN0ZWQgPT09IDApIHJldHVybjtcclxuXHJcbiAgYXdhaXQgbW9uZ29vc2UuZGlzY29ubmVjdCgpO1xyXG4gIGNvbnNvbGUubG9nKFwiRGVzY29uZWN0YWRvIGRlIE1vbmdvREJcIik7XHJcbn07XHJcbiJdLCJuYW1lcyI6WyJtb25nb29zZSIsIm1vbmdvb0Nvbm5lY3Rpb24iLCJpc0Nvbm5lY3RlZCIsImNvbm5lY3QiLCJjb25zb2xlIiwibG9nIiwiY29ubmVjdGlvbnMiLCJsZW5ndGgiLCJyZWFkeVN0YXRlIiwiZGlzY29ubmVjdCIsInByb2Nlc3MiLCJlbnYiLCJNT05HT19VUkwiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(api)/./database/db.ts\n");
 
+/***/ }),
 
-function handler(req, res) {
-    switch(req.method){
-        case "GET":
-            return getEntries(res);
-        case "POST":
-            return postEntry(req, res);
-        default:
-            return res.status(400).json({
-                message: "Endpoint no existe"
-            });
-    }
-}
-const getEntries = async (res)=>{
-    await _database__WEBPACK_IMPORTED_MODULE_0__.db.connect();
-    const entries = await _models__WEBPACK_IMPORTED_MODULE_1__/* .Entry.find */ .k.find().sort({
-        createdAt: "ascending"
-    });
-    await _database__WEBPACK_IMPORTED_MODULE_0__.db.disconnect();
-    res.status(200).json(entries);
-};
-const postEntry = async (req, res)=>{
-    const { description =""  } = req.body;
-    const newEntry = new _models__WEBPACK_IMPORTED_MODULE_1__/* .Entry */ .k({
-        description,
-        createdAt: Date.now()
-    });
-    try {
-        await _database__WEBPACK_IMPORTED_MODULE_0__.db.connect();
-        await newEntry.save();
-        await _database__WEBPACK_IMPORTED_MODULE_0__.db.disconnect();
-        return res.status(201).json(newEntry);
-    } catch (error) {
-        await _database__WEBPACK_IMPORTED_MODULE_0__.db.disconnect();
-        console.log(error);
-        return res.status(500).json({
-            message: "algo sali\xf3 mal, revisar consola del servidor"
-        });
-    }
-};
+/***/ "(api)/./database/dbEntries.ts":
+/*!*******************************!*\
+  !*** ./database/dbEntries.ts ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getEntryById\": () => (/* binding */ getEntryById)\n/* harmony export */ });\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mongoose */ \"mongoose\");\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mongoose__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _models__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models */ \"(api)/./models/index.ts\");\n/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ */ \"(api)/./database/index.ts\");\n\n\n\nconst getEntryById = async (id)=>{\n    if (!(0,mongoose__WEBPACK_IMPORTED_MODULE_0__.isValidObjectId)(id)) return null;\n    await ___WEBPACK_IMPORTED_MODULE_2__.db.connect();\n    const entry = await _models__WEBPACK_IMPORTED_MODULE_1__.Entry.findById(id).lean();\n    await ___WEBPACK_IMPORTED_MODULE_2__.db.disconnect();\n    return JSON.parse(JSON.stringify(entry)); // no va a funcionar\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9kYXRhYmFzZS9kYkVudHJpZXMudHMuanMiLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7QUFBMkM7QUFDRDtBQUNsQjtBQUVqQixNQUFNRyxlQUFlLE9BQU9DLEtBQXVDO0lBQ3hFLElBQUksQ0FBQ0oseURBQWVBLENBQUNJLEtBQUssT0FBTyxJQUFJO0lBRXJDLE1BQU1GLHlDQUFVO0lBQ2hCLE1BQU1JLFFBQVEsTUFBTUwsbURBQWMsQ0FBQ0csSUFBSUksSUFBSTtJQUMzQyxNQUFNTiw0Q0FBYTtJQUVuQixPQUFPUSxLQUFLQyxLQUFLLENBQUNELEtBQUtFLFNBQVMsQ0FBQ04sU0FBUyxvQkFBb0I7QUFDaEUsRUFBRSIsInNvdXJjZXMiOlsid2VicGFjazovL29wZW4tamlyYS8uL2RhdGFiYXNlL2RiRW50cmllcy50cz9jMTE4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IGlzVmFsaWRPYmplY3RJZCB9IGZyb20gXCJtb25nb29zZVwiO1xyXG5pbXBvcnQgeyBFbnRyeSwgSUVudHJ5IH0gZnJvbSBcIi4uL21vZGVsc1wiO1xyXG5pbXBvcnQgeyBkYiB9IGZyb20gXCIuL1wiO1xyXG5cclxuZXhwb3J0IGNvbnN0IGdldEVudHJ5QnlJZCA9IGFzeW5jIChpZDogc3RyaW5nKTogUHJvbWlzZTxJRW50cnkgfCBudWxsPiA9PiB7XHJcbiAgaWYgKCFpc1ZhbGlkT2JqZWN0SWQoaWQpKSByZXR1cm4gbnVsbDtcclxuXHJcbiAgYXdhaXQgZGIuY29ubmVjdCgpO1xyXG4gIGNvbnN0IGVudHJ5ID0gYXdhaXQgRW50cnkuZmluZEJ5SWQoaWQpLmxlYW4oKTtcclxuICBhd2FpdCBkYi5kaXNjb25uZWN0KCk7XHJcblxyXG4gIHJldHVybiBKU09OLnBhcnNlKEpTT04uc3RyaW5naWZ5KGVudHJ5KSk7IC8vIG5vIHZhIGEgZnVuY2lvbmFyXHJcbn07XHJcbiJdLCJuYW1lcyI6WyJpc1ZhbGlkT2JqZWN0SWQiLCJFbnRyeSIsImRiIiwiZ2V0RW50cnlCeUlkIiwiaWQiLCJjb25uZWN0IiwiZW50cnkiLCJmaW5kQnlJZCIsImxlYW4iLCJkaXNjb25uZWN0IiwiSlNPTiIsInBhcnNlIiwic3RyaW5naWZ5Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(api)/./database/dbEntries.ts\n");
+
+/***/ }),
+
+/***/ "(api)/./database/index.ts":
+/*!***************************!*\
+  !*** ./database/index.ts ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"db\": () => (/* reexport module object */ _db__WEBPACK_IMPORTED_MODULE_0__),\n/* harmony export */   \"dbEntries\": () => (/* reexport module object */ _dbEntries__WEBPACK_IMPORTED_MODULE_1__)\n/* harmony export */ });\n/* harmony import */ var _db__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./db */ \"(api)/./database/db.ts\");\n/* harmony import */ var _dbEntries__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dbEntries */ \"(api)/./database/dbEntries.ts\");\n/* harmony import */ var _seed_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./seed-data */ \"(api)/./database/seed-data.ts\");\n/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};\n/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _seed_data__WEBPACK_IMPORTED_MODULE_2__) if([\"default\",\"db\",\"dbEntries\"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _seed_data__WEBPACK_IMPORTED_MODULE_2__[__WEBPACK_IMPORT_KEY__]\n/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);\n\n\n\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9kYXRhYmFzZS9pbmRleC50cy5qcyIsIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7OztBQUEyQjtBQUNjO0FBRWIiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9vcGVuLWppcmEvLi9kYXRhYmFzZS9pbmRleC50cz8xYmYzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCAqIGFzIGRiIGZyb20gXCIuL2RiXCI7XHJcbmV4cG9ydCAqIGFzIGRiRW50cmllcyBmcm9tIFwiLi9kYkVudHJpZXNcIjtcclxuXHJcbmV4cG9ydCAqIGZyb20gXCIuL3NlZWQtZGF0YVwiO1xyXG4iXSwibmFtZXMiOlsiZGIiLCJkYkVudHJpZXMiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(api)/./database/index.ts\n");
+
+/***/ }),
+
+/***/ "(api)/./database/seed-data.ts":
+/*!*******************************!*\
+  !*** ./database/seed-data.ts ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"seedData\": () => (/* binding */ seedData)\n/* harmony export */ });\nconst seedData = {\n    entries: [\n        {\n            description: \"Pendiente: Lorem ipsum lreomngknakm ndhflkasl kadkfjaklf lkhsadkhlkawsh \",\n            status: \"pending\",\n            createdAt: Date.now()\n        },\n        {\n            description: \"En Progreso: Lorem ipsukhlkawsh \",\n            status: \"in-progress\",\n            createdAt: Date.now() - 1000000\n        },\n        {\n            description: \"Terminadas, Lorem ipsum lreomn jajjasjajsdlk lkdsalkna adkfjaklf lkhsadkhlkawsh \",\n            status: \"finished\",\n            createdAt: Date.now() - 100000\n        }\n    ]\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9kYXRhYmFzZS9zZWVkLWRhdGEudHMuanMiLCJtYXBwaW5ncyI6Ijs7OztBQVVPLE1BQU1BLFdBQXFCO0lBQ2hDQyxTQUFTO1FBQ1A7WUFDRUMsYUFDRTtZQUNGQyxRQUFRO1lBQ1JDLFdBQVdDLEtBQUtDLEdBQUc7UUFDckI7UUFDQTtZQUNFSixhQUFhO1lBQ2JDLFFBQVE7WUFDUkMsV0FBV0MsS0FBS0MsR0FBRyxLQUFLO1FBQzFCO1FBQ0E7WUFDRUosYUFDRTtZQUNGQyxRQUFRO1lBQ1JDLFdBQVdDLEtBQUtDLEdBQUcsS0FBSztRQUMxQjtLQUNEO0FBQ0gsRUFBRSIsInNvdXJjZXMiOlsid2VicGFjazovL29wZW4tamlyYS8uL2RhdGFiYXNlL3NlZWQtZGF0YS50cz81Mzk4Il0sInNvdXJjZXNDb250ZW50IjpbImludGVyZmFjZSBTZWVkRGF0YSB7XHJcbiAgZW50cmllczogU2VlZEVudHJ5W107XHJcbn1cclxuXHJcbmludGVyZmFjZSBTZWVkRW50cnkge1xyXG4gIGRlc2NyaXB0aW9uOiBzdHJpbmc7XHJcbiAgc3RhdHVzOiBzdHJpbmc7XHJcbiAgY3JlYXRlZEF0OiBudW1iZXI7XHJcbn1cclxuXHJcbmV4cG9ydCBjb25zdCBzZWVkRGF0YTogU2VlZERhdGEgPSB7XHJcbiAgZW50cmllczogW1xyXG4gICAge1xyXG4gICAgICBkZXNjcmlwdGlvbjpcclxuICAgICAgICBcIlBlbmRpZW50ZTogTG9yZW0gaXBzdW0gbHJlb21uZ2tuYWttIG5kaGZsa2FzbCBrYWRrZmpha2xmIGxraHNhZGtobGthd3NoIFwiLFxyXG4gICAgICBzdGF0dXM6IFwicGVuZGluZ1wiLFxyXG4gICAgICBjcmVhdGVkQXQ6IERhdGUubm93KCksXHJcbiAgICB9LFxyXG4gICAge1xyXG4gICAgICBkZXNjcmlwdGlvbjogXCJFbiBQcm9ncmVzbzogTG9yZW0gaXBzdWtobGthd3NoIFwiLFxyXG4gICAgICBzdGF0dXM6IFwiaW4tcHJvZ3Jlc3NcIixcclxuICAgICAgY3JlYXRlZEF0OiBEYXRlLm5vdygpIC0gMTAwMDAwMCxcclxuICAgIH0sXHJcbiAgICB7XHJcbiAgICAgIGRlc2NyaXB0aW9uOlxyXG4gICAgICAgIFwiVGVybWluYWRhcywgTG9yZW0gaXBzdW0gbHJlb21uIGphamphc2phanNkbGsgbGtkc2Fsa25hIGFka2ZqYWtsZiBsa2hzYWRraGxrYXdzaCBcIixcclxuICAgICAgc3RhdHVzOiBcImZpbmlzaGVkXCIsXHJcbiAgICAgIGNyZWF0ZWRBdDogRGF0ZS5ub3coKSAtIDEwMDAwMCxcclxuICAgIH0sXHJcbiAgXSxcclxufTtcclxuIl0sIm5hbWVzIjpbInNlZWREYXRhIiwiZW50cmllcyIsImRlc2NyaXB0aW9uIiwic3RhdHVzIiwiY3JlYXRlZEF0IiwiRGF0ZSIsIm5vdyJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(api)/./database/seed-data.ts\n");
+
+/***/ }),
+
+/***/ "(api)/./models/Entry.ts":
+/*!*************************!*\
+  !*** ./models/Entry.ts ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mongoose */ \"mongoose\");\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mongoose__WEBPACK_IMPORTED_MODULE_0__);\n\nconst entrySchema = new mongoose__WEBPACK_IMPORTED_MODULE_0__.Schema({\n    description: {\n        type: String,\n        required: true\n    },\n    createdAt: {\n        type: Number\n    },\n    status: {\n        type: String,\n        enum: {\n            values: [\n                \"pending\",\n                \"in-progress\",\n                \"finished\"\n            ],\n            message: \"{VALUE} no es un estado permitido\"\n        },\n        default: \"pending\"\n    }\n}, {\n    strictQuery: false\n});\nconst EntryModel = (mongoose__WEBPACK_IMPORTED_MODULE_0___default().models.Entry) || mongoose__WEBPACK_IMPORTED_MODULE_0___default().model(\"Entry\", entrySchema);\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EntryModel);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9tb2RlbHMvRW50cnkudHMuanMiLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBQW1EO0FBS25ELE1BQU1FLGNBQWMsSUFBSUQsNENBQU1BLENBQzVCO0lBQ0VFLGFBQWE7UUFBRUMsTUFBTUM7UUFBUUMsVUFBVSxJQUFJO0lBQUM7SUFDNUNDLFdBQVc7UUFBRUgsTUFBTUk7SUFBTztJQUMxQkMsUUFBUTtRQUNOTCxNQUFNQztRQUNOSyxNQUFNO1lBQ0pDLFFBQVE7Z0JBQUM7Z0JBQVc7Z0JBQWU7YUFBVztZQUM5Q0MsU0FBUztRQUNYO1FBQ0FDLFNBQVM7SUFDWDtBQUNGLEdBQ0E7SUFBRUMsYUFBYSxLQUFLO0FBQUM7QUFHdkIsTUFBTUMsYUFDSmYsOERBQXFCLElBQUlBLHFEQUFjLENBQUMsU0FBU0U7QUFFbkQsaUVBQWVhLFVBQVVBLEVBQUMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9vcGVuLWppcmEvLi9tb2RlbHMvRW50cnkudHM/NjczNiJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgbW9uZ29vc2UsIHsgTW9kZWwsIFNjaGVtYSB9IGZyb20gXCJtb25nb29zZVwiO1xyXG5pbXBvcnQgeyBFbnRyeSB9IGZyb20gXCIuLi9pbnRlcmZhY2VzXCI7XHJcblxyXG5leHBvcnQgaW50ZXJmYWNlIElFbnRyeSBleHRlbmRzIEVudHJ5IHt9XHJcblxyXG5jb25zdCBlbnRyeVNjaGVtYSA9IG5ldyBTY2hlbWEoXHJcbiAge1xyXG4gICAgZGVzY3JpcHRpb246IHsgdHlwZTogU3RyaW5nLCByZXF1aXJlZDogdHJ1ZSB9LFxyXG4gICAgY3JlYXRlZEF0OiB7IHR5cGU6IE51bWJlciB9LFxyXG4gICAgc3RhdHVzOiB7XHJcbiAgICAgIHR5cGU6IFN0cmluZyxcclxuICAgICAgZW51bToge1xyXG4gICAgICAgIHZhbHVlczogW1wicGVuZGluZ1wiLCBcImluLXByb2dyZXNzXCIsIFwiZmluaXNoZWRcIl0sXHJcbiAgICAgICAgbWVzc2FnZTogXCJ7VkFMVUV9IG5vIGVzIHVuIGVzdGFkbyBwZXJtaXRpZG9cIixcclxuICAgICAgfSxcclxuICAgICAgZGVmYXVsdDogXCJwZW5kaW5nXCIsXHJcbiAgICB9LFxyXG4gIH0sXHJcbiAgeyBzdHJpY3RRdWVyeTogZmFsc2UgfVxyXG4pO1xyXG5cclxuY29uc3QgRW50cnlNb2RlbDogTW9kZWw8SUVudHJ5PiA9XHJcbiAgbW9uZ29vc2UubW9kZWxzLkVudHJ5IHx8IG1vbmdvb3NlLm1vZGVsKFwiRW50cnlcIiwgZW50cnlTY2hlbWEpO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgRW50cnlNb2RlbDtcclxuIl0sIm5hbWVzIjpbIm1vbmdvb3NlIiwiU2NoZW1hIiwiZW50cnlTY2hlbWEiLCJkZXNjcmlwdGlvbiIsInR5cGUiLCJTdHJpbmciLCJyZXF1aXJlZCIsImNyZWF0ZWRBdCIsIk51bWJlciIsInN0YXR1cyIsImVudW0iLCJ2YWx1ZXMiLCJtZXNzYWdlIiwiZGVmYXVsdCIsInN0cmljdFF1ZXJ5IiwiRW50cnlNb2RlbCIsIm1vZGVscyIsIkVudHJ5IiwibW9kZWwiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(api)/./models/Entry.ts\n");
+
+/***/ }),
+
+/***/ "(api)/./models/index.ts":
+/*!*************************!*\
+  !*** ./models/index.ts ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Entry\": () => (/* reexport safe */ _Entry__WEBPACK_IMPORTED_MODULE_0__[\"default\"])\n/* harmony export */ });\n/* harmony import */ var _Entry__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Entry */ \"(api)/./models/Entry.ts\");\n\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9tb2RlbHMvaW5kZXgudHMuanMiLCJtYXBwaW5ncyI6Ijs7Ozs7QUFBd0QiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9vcGVuLWppcmEvLi9tb2RlbHMvaW5kZXgudHM/ODZkNyJdLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgeyBkZWZhdWx0IGFzIEVudHJ5LCB0eXBlIElFbnRyeSB9IGZyb20gXCIuL0VudHJ5XCI7XHJcbiJdLCJuYW1lcyI6WyJkZWZhdWx0IiwiRW50cnkiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(api)/./models/index.ts\n");
+
+/***/ }),
+
+/***/ "(api)/./pages/api/entries/index.ts":
+/*!************************************!*\
+  !*** ./pages/api/entries/index.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ handler)\n/* harmony export */ });\n/* harmony import */ var _database__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../database */ \"(api)/./database/index.ts\");\n/* harmony import */ var _models__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../models */ \"(api)/./models/index.ts\");\n\n\nfunction handler(req, res) {\n    switch(req.method){\n        case \"GET\":\n            return getEntries(res);\n        case \"POST\":\n            return postEntry(req, res);\n        default:\n            return res.status(400).json({\n                message: \"Endpoint no existe\"\n            });\n    }\n}\nconst getEntries = async (res)=>{\n    await _database__WEBPACK_IMPORTED_MODULE_0__.db.connect();\n    const entries = await _models__WEBPACK_IMPORTED_MODULE_1__.Entry.find().sort({\n        createdAt: \"ascending\"\n    });\n    await _database__WEBPACK_IMPORTED_MODULE_0__.db.disconnect();\n    res.status(200).json(entries);\n};\nconst postEntry = async (req, res)=>{\n    const { description =\"\"  } = req.body;\n    const newEntry = new _models__WEBPACK_IMPORTED_MODULE_1__.Entry({\n        description,\n        createdAt: Date.now()\n    });\n    try {\n        await _database__WEBPACK_IMPORTED_MODULE_0__.db.connect();\n        await newEntry.save();\n        await _database__WEBPACK_IMPORTED_MODULE_0__.db.disconnect();\n        return res.status(201).json(newEntry);\n    } catch (error) {\n        await _database__WEBPACK_IMPORTED_MODULE_0__.db.disconnect();\n        console.log(error);\n        return res.status(500).json({\n            message: \"algo sali\\xf3 mal, revisar consola del servidor\"\n        });\n    }\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9wYWdlcy9hcGkvZW50cmllcy9pbmRleC50cy5qcyIsIm1hcHBpbmdzIjoiOzs7Ozs7QUFDdUM7QUFDUztBQUlqQyxTQUFTRSxRQUN0QkMsR0FBbUIsRUFDbkJDLEdBQTBCLEVBQzFCO0lBQ0EsT0FBUUQsSUFBSUUsTUFBTTtRQUNoQixLQUFLO1lBQ0gsT0FBT0MsV0FBV0Y7UUFFcEIsS0FBSztZQUNILE9BQU9HLFVBQVVKLEtBQUtDO1FBRXhCO1lBQ0UsT0FBT0EsSUFBSUksTUFBTSxDQUFDLEtBQUtDLElBQUksQ0FBQztnQkFBRUMsU0FBUztZQUFxQjtJQUNoRTtBQUNGLENBQUM7QUFFRCxNQUFNSixhQUFhLE9BQU9GLE1BQStCO0lBQ3ZELE1BQU1KLGlEQUFVO0lBRWhCLE1BQU1ZLFVBQVUsTUFBTVgsK0NBQVUsR0FBR2EsSUFBSSxDQUFDO1FBQUVDLFdBQVc7SUFBWTtJQUVqRSxNQUFNZixvREFBYTtJQUNuQkksSUFBSUksTUFBTSxDQUFDLEtBQUtDLElBQUksQ0FBQ0c7QUFDdkI7QUFFQSxNQUFNTCxZQUFZLE9BQU9KLEtBQXFCQyxNQUErQjtJQUMzRSxNQUFNLEVBQUVhLGFBQWMsR0FBRSxFQUFFLEdBQUdkLElBQUllLElBQUk7SUFFckMsTUFBTUMsV0FBVyxJQUFJbEIsMENBQUtBLENBQUM7UUFDekJnQjtRQUNBRixXQUFXSyxLQUFLQyxHQUFHO0lBQ3JCO0lBRUEsSUFBSTtRQUNGLE1BQU1yQixpREFBVTtRQUVoQixNQUFNbUIsU0FBU0csSUFBSTtRQUVuQixNQUFNdEIsb0RBQWE7UUFFbkIsT0FBT0ksSUFBSUksTUFBTSxDQUFDLEtBQUtDLElBQUksQ0FBQ1U7SUFDOUIsRUFBRSxPQUFPSSxPQUFPO1FBQ2QsTUFBTXZCLG9EQUFhO1FBQ25Cd0IsUUFBUUMsR0FBRyxDQUFDRjtRQUVaLE9BQU9uQixJQUNKSSxNQUFNLENBQUMsS0FDUEMsSUFBSSxDQUFDO1lBQUVDLFNBQVM7UUFBK0M7SUFDcEU7QUFDRiIsInNvdXJjZXMiOlsid2VicGFjazovL29wZW4tamlyYS8uL3BhZ2VzL2FwaS9lbnRyaWVzL2luZGV4LnRzP2UzOTgiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHR5cGUgeyBOZXh0QXBpUmVxdWVzdCwgTmV4dEFwaVJlc3BvbnNlIH0gZnJvbSBcIm5leHRcIjtcclxuaW1wb3J0IHsgZGIgfSBmcm9tIFwiLi4vLi4vLi4vZGF0YWJhc2VcIjtcclxuaW1wb3J0IHsgRW50cnksIElFbnRyeSB9IGZyb20gXCIuLi8uLi8uLi9tb2RlbHNcIjtcclxuXHJcbnR5cGUgRGF0YSA9IHsgbWVzc2FnZTogc3RyaW5nIH0gfCBJRW50cnlbXSB8IElFbnRyeTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIGhhbmRsZXIoXHJcbiAgcmVxOiBOZXh0QXBpUmVxdWVzdCxcclxuICByZXM6IE5leHRBcGlSZXNwb25zZTxEYXRhPlxyXG4pIHtcclxuICBzd2l0Y2ggKHJlcS5tZXRob2QpIHtcclxuICAgIGNhc2UgXCJHRVRcIjpcclxuICAgICAgcmV0dXJuIGdldEVudHJpZXMocmVzKTtcclxuXHJcbiAgICBjYXNlIFwiUE9TVFwiOlxyXG4gICAgICByZXR1cm4gcG9zdEVudHJ5KHJlcSwgcmVzKTtcclxuXHJcbiAgICBkZWZhdWx0OlxyXG4gICAgICByZXR1cm4gcmVzLnN0YXR1cyg0MDApLmpzb24oeyBtZXNzYWdlOiBcIkVuZHBvaW50IG5vIGV4aXN0ZVwiIH0pO1xyXG4gIH1cclxufVxyXG5cclxuY29uc3QgZ2V0RW50cmllcyA9IGFzeW5jIChyZXM6IE5leHRBcGlSZXNwb25zZTxEYXRhPikgPT4ge1xyXG4gIGF3YWl0IGRiLmNvbm5lY3QoKTtcclxuXHJcbiAgY29uc3QgZW50cmllcyA9IGF3YWl0IEVudHJ5LmZpbmQoKS5zb3J0KHsgY3JlYXRlZEF0OiBcImFzY2VuZGluZ1wiIH0pO1xyXG5cclxuICBhd2FpdCBkYi5kaXNjb25uZWN0KCk7XHJcbiAgcmVzLnN0YXR1cygyMDApLmpzb24oZW50cmllcyk7XHJcbn07XHJcblxyXG5jb25zdCBwb3N0RW50cnkgPSBhc3luYyAocmVxOiBOZXh0QXBpUmVxdWVzdCwgcmVzOiBOZXh0QXBpUmVzcG9uc2U8RGF0YT4pID0+IHtcclxuICBjb25zdCB7IGRlc2NyaXB0aW9uID0gXCJcIiB9ID0gcmVxLmJvZHk7XHJcblxyXG4gIGNvbnN0IG5ld0VudHJ5ID0gbmV3IEVudHJ5KHtcclxuICAgIGRlc2NyaXB0aW9uLFxyXG4gICAgY3JlYXRlZEF0OiBEYXRlLm5vdygpLFxyXG4gIH0pO1xyXG5cclxuICB0cnkge1xyXG4gICAgYXdhaXQgZGIuY29ubmVjdCgpO1xyXG5cclxuICAgIGF3YWl0IG5ld0VudHJ5LnNhdmUoKTtcclxuXHJcbiAgICBhd2FpdCBkYi5kaXNjb25uZWN0KCk7XHJcblxyXG4gICAgcmV0dXJuIHJlcy5zdGF0dXMoMjAxKS5qc29uKG5ld0VudHJ5KTtcclxuICB9IGNhdGNoIChlcnJvcikge1xyXG4gICAgYXdhaXQgZGIuZGlzY29ubmVjdCgpO1xyXG4gICAgY29uc29sZS5sb2coZXJyb3IpO1xyXG5cclxuICAgIHJldHVybiByZXNcclxuICAgICAgLnN0YXR1cyg1MDApXHJcbiAgICAgIC5qc29uKHsgbWVzc2FnZTogXCJhbGdvIHNhbGnDsyBtYWwsIHJldmlzYXIgY29uc29sYSBkZWwgc2Vydmlkb3JcIiB9KTtcclxuICB9XHJcbn07XHJcbiJdLCJuYW1lcyI6WyJkYiIsIkVudHJ5IiwiaGFuZGxlciIsInJlcSIsInJlcyIsIm1ldGhvZCIsImdldEVudHJpZXMiLCJwb3N0RW50cnkiLCJzdGF0dXMiLCJqc29uIiwibWVzc2FnZSIsImNvbm5lY3QiLCJlbnRyaWVzIiwiZmluZCIsInNvcnQiLCJjcmVhdGVkQXQiLCJkaXNjb25uZWN0IiwiZGVzY3JpcHRpb24iLCJib2R5IiwibmV3RW50cnkiLCJEYXRlIiwibm93Iiwic2F2ZSIsImVycm9yIiwiY29uc29sZSIsImxvZyJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(api)/./pages/api/entries/index.ts\n");
 
 /***/ })
 
@@ -73,7 +100,7 @@ const postEntry = async (req, res)=>{
 var __webpack_require__ = require("../../webpack-api-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [719], () => (__webpack_exec__(3500)));
+var __webpack_exports__ = (__webpack_exec__("(api)/./pages/api/entries/index.ts"));
 module.exports = __webpack_exports__;
 
 })();
